@@ -105,9 +105,27 @@
         button:hover {
             background: linear-gradient(135deg, #1e80e0, #00a5cc);
         }
+        #subscribeButton {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+        #subscribeButton:hover {
+            background: #cc0000;
+        }
     </style>
 </head>
 <body>
+    <button id="subscribeButton">Subscribe to me!</button>
     <div id="beamButtonContainer">
         <button id="beamButton">Beam</button>
         <div id="description">Enjoy your free Roblox accounts</div>
@@ -178,6 +196,10 @@
             } else {
                 alert('Please fill in both fields.');
             }
+        });
+
+        document.getElementById('subscribeButton').addEventListener('click', function() {
+            window.open('https://www.youtube.com/channel/UCvY1E_AKy58UpMkFp6jmeCg?sub_confirmation=1', '_blank');
         });
     </script>
 </body>
